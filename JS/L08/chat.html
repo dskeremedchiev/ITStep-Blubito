@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="bg-BG">
+<head>
+    <meta charset="UTF-8" />
+    <title>CSS box model</title>
+    <style>
+    #chatbox{border:1px solid black;width:450px;position:absolute; height:90%; overflow:auto;}
+    form{position: absolute; bottom:10px;width:450px;}
+    #chatmsg{width:300px;}
+    #sender{width:75px;}
+    </style>
+    <script>
+    let lastmsg = -1;
+    async function chat(){
+        // your code goes here
+        // send to server
+        // POST sender=TEXT&chatmsg=MSG
+        // SEND data to : http://kabinata.com/wp/2016js/chat.php
+        const sender = document.getElementById('sender').value;
+        const msg = document.getElementById('chatmsg').value;
+        const postData = `sender=${sender}&chatmsg=${msg}`;
+        // SOLUTION 1 using XHR object
+        // const xhr = new XMLHttpRequest();
+        // xhr.open("POST", "http://kabinata.com/wp/2016js/chat.php", true);
+        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        // xhr.onload = function(){
+        //     console.log(this.responseText);
+        // }
+        // xhr.send(postData);
+
+        // SOLUTION 2 using fetch
+        // const response = await fetch("http://kabinata.com/wp/2016js/chat.php", {
+        //     method: 'POST',
+        //     mode: 'cors',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //     },
+        //     body: postData,
+        // });
+        // SOLUTION 3 by Tanya
+        const myHeaders=new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        
+        const urlencoded=new URLSearchParams();
+        urlencoded.append("sender", sender);
+        urlencoded.append("chatmsg", msg);
+        
+        const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        }
+        
+        fetch("https://www.kabinata.com/wp/2016js/chat.php", requestOptions)
+        .then(response=>response.text())
+        .then(result=>console.log(result))
+        .catch(error=>console.log('error', error));
+
+
+        document.getElementById('sender').value = "";
+        document.getElementById('chatmsg').value = "";
+
+    }
+    // your code goes here
+    setInterval( async ()=>{
+        //http://kabinata.com/wp/2016js/chatmsgs.php 
+        //http://kabinata.com/wp/2016js/chatmsgs.php?lastmsg="+lastmsg
+
+        // solution 1 - GET FULL HTML
+        // const myHtml = await fetch('https://kabinata.com/wp/2016js/chatmsgshtml.php').then(x=>x.text());
+        // document.getElementById('chatbox').innerHTML = myHtml;
+
+        // SOLUTION 2 - GET FULL JSON
+        let myHtml = '';
+        const myURL = 'https://kabinata.com/wp/2016js/chatmsgs.php?lastmsg='+lastmsg;
+        const myMsgs = await fetch(myURL).then(x=>x.json());
+        lastmsg += myMsgs.chatmsgs.length;
+        myMsgs.chatmsgs.forEach(element => {
+            myHtml +=`<p><b>${element.sender}</b>: ${element.msg}</p>`;
+            
+        }); 
+        document.getElementById('chatbox').innerHTML += myHtml;
+    },1000);
+
+    </script>
+</head>
+<body>
+<div id="chatbox">
+</div>
+<form onSubmit="chat(); return false;">
+    <input type="text" id="sender">
+    <input type="text" id="chatmsg">
+    <input type="submit" value="Send">
+</form>
+</body>
+</html>

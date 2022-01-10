@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getMyElements(){
+    //         console.log(document.body.firstElementChild);
+    //         console.log(document.body.firstElementChild.nextElementSibling);
+    //         console.log(document.body.firstElementChild.nextElementSibling.lastElementChild);
+    //         console.log(
+    // document.body.firstElementChild.nextElementSibling.lastElementChild.previousElementSibling
+    //         );
+
+
+            console.log(document.body.lastChild.nextSibling);
+            console.log(document.body.children[0].previousSibling);
+
+        }
+
+    </script>
+</head>
+<body onload="getMyElements()">
+    <div>Users:</div>
+    <ul>
+        <li>John</li>
+        <li>Pete</li>
+    </ul>
+</body>
+</html>
