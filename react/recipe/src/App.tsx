@@ -11,6 +11,15 @@ import Recipe from './components/Recipe';
 import RouteTest from './components/RouteTest';
 //import {recepes} from './components/recepes';
 import Addreceipt from './components/Addreceipt';
+import Icndb from './components/Icndb';
+import Icnfba from './components/Icnfba';
+import Weather from './components/Weather';
+import LodashTest from './components/LodashTest';
+import MomentTest from './components/MomentTest';
+import Exams from './components/Exams';
+import TestUseMemo from './components/TestUseMemo';
+import TestUseRef from './components/TestUseRef';
+import FluentUITest from './components/FluentUITest';
 
 function App() {
   return (
@@ -24,7 +33,15 @@ function App() {
           <Route path={'/aboutus'} element={<Aboutus />}></Route>
           <Route path={'/aboutus/:info'} element={<RouteTest />}></Route>
           <Route path={'/addreceipe'} element={<Addreceipt />}></Route>
-
+          <Route path={'/icndbf'} element={<Icndb />}></Route>
+          <Route path={'/icndba'} element={<Icnfba />}></Route>
+          <Route path={'/weather'} element={<Weather />}></Route>
+          <Route path={'/lotest'} element={<LodashTest />}></Route>
+          <Route path={'/motest'} element={<MomentTest />}></Route>
+          <Route path={'/exams'} element={<Exams />}></Route>
+          <Route path={'/testusememo'} element={<TestUseMemo />}></Route>
+          <Route path={'/testuseref'} element={<TestUseRef />}></Route>
+          <Route path={'/fluentui'} element={<FluentUITest />}></Route>
           <Route path={'*'} element={<>Nothing there</>}></Route>
         </Routes>
 

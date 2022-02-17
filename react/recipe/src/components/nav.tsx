@@ -23,6 +23,24 @@ export default function Nav() {
                         <li className="nav-item">
                             <Link to={'/aboutus'} className="nav-link">About us</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to={'/icndbf'} className="nav-link">Fetch joke</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to={'/icndba'} className="nav-link">Axios joke</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to={'/weather'} className="nav-link">Weather</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to={'/lotest'} className="nav-link">Lodash Test</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to={'/motest'} className="nav-link">Moment Test</Link>
+                        </li>                        
+                        <li className="nav-item">
+                            <Link to={'/exams'} className="nav-link">Exam Test</Link>
+                        </li>                        
                     </ul>
                 </div>
             </div>
