@@ -1,4 +1,21 @@
-<h4>Name:</h4><app-partei></app-partei>
-<hr>
-<h4>Name:</h4><app-partei></app-partei>
-<hr>
+
+<app-add-parei 
+(parteiCreated)="onAddPartai($event)"
+></app-add-parei>
+
+<ul [style]="{'list-style-type':'none', padding:0}">
+    <li 
+    *ngFor="let partei of parteiList; let i = index" 
+    [ngStyle]="{backgroundColor:(i%2) ? '#eee': 'white'}">
+        <!-- <button 
+            class="btn btn-danger"
+            (click)="removePartei(i)"
+        >X</button> -->
+        <app-partei 
+            [partei]="partei"
+            (parteiDeleted)="onRemovePartei($event)"
+            [parteiId]="i"
+        ></app-partei>
+    </li>
+</ul>
+<!-- make delete partei button -->

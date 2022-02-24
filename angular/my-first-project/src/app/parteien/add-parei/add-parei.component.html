@@ -1,0 +1,29 @@
+<fieldset>
+    <legend>Add new partei</legend>
+    <label for="newParteiType">Type:</label>
+    <input 
+        type="text" 
+        name="newParteiType" 
+        [(ngModel)]="newParteiType" 
+        class="form-control"
+    >
+    <label for="newParteiName">Name:</label>
+    <input 
+        type="text" 
+        name="newParteiName" 
+        class="form-control"
+        [(ngModel)]="newParteiName"
+    >
+    <label for="newParteiMembers">Members:</label>
+    <input 
+        type="number" 
+        name="newParteiMembers" 
+        class="form-control"
+        [(ngModel)]="newParteiMembers"
+        
+    >
+    <button
+    class="btn btn-primary" 
+    (click)="onParteiAdd()"
+    >Add new</button>
+</fieldset>
