@@ -1,5 +1,19 @@
 <app-add-parei (parteiCreated)="onAddPartai($event)"></app-add-parei>
 <h4>This is test H4 element</h4>
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item" *ngFor="let partei of parteiList; let i = index">
+        <app-partai-acc-list [partei]="partei" [parteiId]="i"></app-partai-acc-list>
+    </div>
+</div>
+<hr>
+
+
+
+
+
+
+
+
 <ul [style]="{'list-style-type':'none', padding:0}">
     <li *ngFor="let partei of parteiList; let i = index" [ngStyle]="{backgroundColor:(i%2) ? '#eee': 'white'}">
         <!-- <button 
@@ -7,10 +21,12 @@
             (click)="removePartei(i)"
         >X</button> -->
         <!-- <app-partei [partei]="partei" (parteiDeleted)="onRemovePartei($event)" [parteiId]="i" [testhtml]="testhtml"> -->
-        <app-partei [partei]="partei" [parteiId]="i" >
+        <app-partei [partei]="partei" [parteiId]="i" [parteiType]="partei.parteiType">
             <!-- <b>this is test html</b> -->
             <button class="btn btn-danger" (click)="removePartei(i)">X</button>
         </app-partei>
     </li>
 </ul>
 <!-- make delete partei button -->
+<!-- Test case : see members {{parteiList[0].members}} / see type {{parteiList[0].parteiType}} /  -->
+<!-- TestArray:{{testArray.toString()}} -->

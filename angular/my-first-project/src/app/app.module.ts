@@ -13,6 +13,9 @@ import { DownloaderComponent } from './downloader/downloader.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { ShowhintsComponent } from './showhints/showhints.component';
 import { AddPareiComponent } from './parteien/add-parei/add-parei.component';
+import { ParteiListComponent } from './partei/partei-list/partei-list.component';
+import { CandidateListComponent } from './partei/candidate-list/candidate-list.component';
+import { PartaiAccListComponent } from './parteien/partai-acc-list/partai-acc-list.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { AddPareiComponent } from './parteien/add-parei/add-parei.component';
     DownloaderComponent,
     UserinfoComponent,
     ShowhintsComponent,
-    AddPareiComponent
+    AddPareiComponent,
+    ParteiListComponent,
+    CandidateListComponent,
+    PartaiAccListComponent
   ],
   imports: [
     BrowserModule,
