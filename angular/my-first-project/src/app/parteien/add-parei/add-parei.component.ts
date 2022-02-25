@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -7,18 +7,20 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./add-parei.component.css']
 })
 export class AddPareiComponent implements OnInit {
-  newParteiType="";
-  newParteiName="";
-  newParteiMembers=0;
+  // newParteiType="";
+  // newParteiName="";
+  newParteiMembers=0; // Re-work newParteiMembers using Local Ref or ViewChild methods
   @Output() parteiCreated = new EventEmitter<{parteiType:string, name:string, members:number}>();
-  onParteiAdd(){
+  @ViewChild('newParteiTypeInput') newParteiTypeInput!:ElementRef;
+  onParteiAdd(newParteiNameInput:HTMLInputElement){
     this.parteiCreated.emit({
-      parteiType:this.newParteiType,
-      name:this.newParteiName,
+      parteiType:this.newParteiTypeInput.nativeElement.value,
+      name:newParteiNameInput.value,
       members: this.newParteiMembers
     });
-    this.newParteiType="";
-    this.newParteiName="";
+    newParteiNameInput.value="";
+    // this.newParteiType="";
+    // this.newParteiName="";
     this.newParteiMembers=0;    
   }
   constructor() { }
