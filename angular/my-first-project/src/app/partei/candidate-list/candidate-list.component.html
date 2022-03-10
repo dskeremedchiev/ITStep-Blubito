@@ -1,5 +1,18 @@
 <ol>
-    <li *ngFor="let candidate of candidates">
+    <li 
+        *ngFor="let candidate of candidates; let i=index;" 
+        [ngStyle]="{fontStyle:(i%2)?'italic':''}"
+    >
         {{ candidate}}
     </li>
 </ol>
+
+
+
+<input class="form-control" type="text" name="candidateName" #candidateName>
+<!-- <input type="hidden" name="parteiId" value="{{parteiId}}"> -->
+<button 
+    class="btn btn-primary"
+    (click)="onAddCandidate(candidateName)"
+
+>Add</button>

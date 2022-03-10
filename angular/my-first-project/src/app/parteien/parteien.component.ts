@@ -46,13 +46,16 @@ export class ParteienComponent {
   // }
 
   // testhtml = "<b>this is test html</b>";
-  onAddPartai(partaiData: { parteiType: string, name: string, members: number }) {
+  onAddPartai(partaiData: { parteiType: string, name: string, members: number, candidateList:string[] }) {
     this.parteiList.push({
       parteiType: partaiData.parteiType,
       name: partaiData.name,
       members: partaiData.members,
       candidateList: []
     })
+  }
+  onAddCandidate(candidateData:{parteiId:number, candidateName: string}){
+    this.parteiList[candidateData.parteiId].candidateList.push(candidateData.candidateName);
   }
   // onRemovePartei(partaiId:{id:number}){
   //   this.parteiList.splice(partaiId.id, 1);

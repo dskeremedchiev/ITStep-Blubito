@@ -39,6 +39,8 @@ export class ParteiComponent
   @Input() testhtml!:string;
   @Input() parteiType!:string;
   @Input() testArray!:number[];
+  @Output() onCanidateCreated = new EventEmitter<{parteiId:number, candidateName:string}>();
+
   @ViewChild('myH4Element') myH4Element!:ElementRef;
   showList=false;
   constructor(){
@@ -46,7 +48,17 @@ export class ParteiComponent
     // console.log("H4 element:");
     // console.log(this.myH4Element);
 
-  }    
+  } 
+  canidateCreated(candidateData: {candidateName:string}){
+    console.log("New candidate", candidateData.candidateName, 
+    " ID:", this.parteiId);
+    //emit to parent 
+     this.onCanidateCreated.emit({
+     parteiId: this.parteiId,
+     candidateName:candidateData.candidateName,
+     });
+  }
+  
   changeParteiData(){
     // this.parteiElement.members = 10000;
     // this.parteiType = "NewParteiType";
