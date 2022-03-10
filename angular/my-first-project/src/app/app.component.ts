@@ -9,4 +9,5 @@ export class AppComponent {
   title = 'Hello ANGULAR!';
   loremipsum = 'Lorem ipsum dolor sit amet';
   name = "John Dow";
+  myBgColor='pink';
 }

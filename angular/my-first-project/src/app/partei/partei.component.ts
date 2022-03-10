@@ -14,7 +14,8 @@ import {
   ElementRef,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
+  OnDestroy,
+  ContentChild
 } from "@angular/core";
 @Component({
   selector: 'app-partei',
@@ -24,13 +25,13 @@ import {
 })
 
 export class ParteiComponent  
-    // implements 
-    // OnInit, 
+     implements 
+     OnInit, 
     // OnChanges, 
     // DoCheck, 
-    // AfterContentInit,
+      AfterContentInit
     // AfterContentChecked,
-    // AfterViewInit,
+    // AfterViewInit
     // AfterViewChecked,
     // OnDestroy
 {
@@ -42,6 +43,7 @@ export class ParteiComponent
   @Output() onCanidateCreated = new EventEmitter<{parteiId:number, candidateName:string}>();
 
   @ViewChild('myH4Element') myH4Element!:ElementRef;
+  @ContentChild('contentButton') contentButton!:ElementRef;
   showList=false;
   constructor(){
     // console.log("Constructor called");
@@ -72,11 +74,13 @@ export class ParteiComponent
   //   console.log("H4 element:");
   //   console.log(this.myH4Element);
   // }
-  // ngOnInit(): void {
-  //   console.log("ngOnInit called");
-  //   console.log("H4 element:");
-  //   console.log(this.myH4Element);
-  // }
+  ngOnInit(): void {
+    // console.log("ngOnInit called");
+    // console.log("H4 element:");
+    // console.log(this.myH4Element);
+    // console.log("Button element:");
+    // console.log(this.contentButton);        
+  }
 
   // ngDoCheck(): void{
   //   console.log("doCheck called");
@@ -84,11 +88,13 @@ export class ParteiComponent
   //   console.log("H4 element:");
   //   console.log(this.myH4Element);    
   // }
-  // ngAfterContentInit():void{
-  //   console.log("ngAfterContentInit called");
-  //   console.log("H4 element:");
-  //   console.log(this.myH4Element); 
-  // }
+  ngAfterContentInit():void{
+    // console.log("ngAfterContentInit called");
+    // console.log("H4 element:");
+    // console.log(this.myH4Element); 
+    // console.log("Button element:");
+    // console.log(this.contentButton.nativeElement.textContent);        
+  }
   // ngAfterContentChecked():void{
   //   console.log("ngAfterContentChecked called");
   //   console.log("Type is:" + this.parteiType);
@@ -97,8 +103,10 @@ export class ParteiComponent
   // }
   // ngAfterViewInit(): void{
   //   console.log("ngAfterViewInit called");
-  //   console.log("H4 element:");
-  //   console.log(this.myH4Element);    
+  //   // console.log("H4 element:");
+  //   // console.log(this.myH4Element);    
+  //    console.log("Button element:");
+  //    console.log(this.contentButton.nativeElement.textContent);    
   // }
 
   // ngAfterViewChecked():void{

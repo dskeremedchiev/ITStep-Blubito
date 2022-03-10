@@ -31,7 +31,11 @@
             (onCanidateCreated)="onAddCandidate($event)"
         >
             <!-- <b>this is test html</b> -->
-            <button class="btn btn-danger" (click)="removePartei(i)">X</button>
+            <button 
+                class="btn btn-danger" 
+                (click)="removePartei(i)"
+                #contentButton
+            >X</button>
         </app-partei>
     </li>
 </ul>
