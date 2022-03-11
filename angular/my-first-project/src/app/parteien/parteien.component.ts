@@ -61,11 +61,11 @@ export class ParteienComponent implements OnInit {
   //     candidateList: []
   //   });
   // }
-  onAddCandidate(candidateData:{parteiId:number, candidateName: string}){
-    //console.log('Candidate added');
-    this.loggingService.logParteiDataChange("Parteien add new candidate:" + candidateData.candidateName);
-    this.parteiList[candidateData.parteiId].candidateList.push(candidateData.candidateName);
-  }
+  // onAddCandidate(candidateData:{parteiId:number, candidateName: string}){
+  //   //console.log('Candidate added');
+  //   this.loggingService.logParteiDataChange("Parteien add new candidate:" + candidateData.candidateName);
+  //   this.parteiList[candidateData.parteiId].candidateList.push(candidateData.candidateName);
+  // }
   // onRemovePartei(partaiId:{id:number}){
   //   this.parteiList.splice(partaiId.id, 1);
   // }

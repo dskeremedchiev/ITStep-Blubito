@@ -42,7 +42,7 @@ export class ParteiComponent
   @Input() testhtml!:string;
   @Input() parteiType!:string;
   @Input() testArray!:number[];
-  @Output() onCanidateCreated = new EventEmitter<{parteiId:number, candidateName:string}>();
+  // @Output() onCanidateCreated = new EventEmitter<{parteiId:number, candidateName:string}>();
 
   @ViewChild('myH4Element') myH4Element!:ElementRef;
   @ContentChild('contentButton') contentButton!:ElementRef;
@@ -53,17 +53,17 @@ export class ParteiComponent
     // console.log(this.myH4Element);
 
   } 
-  canidateCreated(candidateData: {candidateName:string}){
+  // canidateCreated(candidateData: {candidateName:string}){
 
-    // console.log("New candidate", candidateData.candidateName, 
-    // " ID:", this.parteiId);
-    //emit to parent 
-    this.loggingService.logParteiDataChange('partei comp add candidate:' + candidateData.candidateName);
-     this.onCanidateCreated.emit({
-     parteiId: this.parteiId,
-     candidateName:candidateData.candidateName,
-     });
-  }
+  //   // console.log("New candidate", candidateData.candidateName, 
+  //   // " ID:", this.parteiId);
+  //   //emit to parent 
+  //   this.loggingService.logParteiDataChange('partei comp add candidate:' + candidateData.candidateName);
+  //    this.onCanidateCreated.emit({
+  //    parteiId: this.parteiId,
+  //    candidateName:candidateData.candidateName,
+  //    });
+  // }
   
   changeParteiData(){
     // this.parteiElement.members = 10000;

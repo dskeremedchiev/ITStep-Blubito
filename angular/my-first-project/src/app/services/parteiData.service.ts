@@ -1,3 +1,8 @@
+import { Injectable } from "@angular/core";
+import { LoggingService } from "./logging.service";
+
+@Injectable()
+
 export class ParteiDataService {
     parteiList = [
         {
@@ -18,8 +23,15 @@ export class ParteiDataService {
             ]
         },
     ];
+
+    constructor(
+        private loggingService: LoggingService,
+    ) { }
+
+
     removePartei(id: number) {
         this.parteiList.splice(id, 1);
+        this.loggingService.logParteiDataChange("Deleted partei: " + id);
     }
     addPartai(partaiData: { parteiType: string, name: string, members: number, candidateList: string[] }) {
         this.parteiList.push({
@@ -28,5 +40,14 @@ export class ParteiDataService {
             members: partaiData.members,
             candidateList: []
         });
+        this.loggingService.logParteiDataChange("Added new partei:" + partaiData.name);
+    }
+    addCandidate(candidateData: { parteiId: number, candidateName: string }) {
+        //console.log('Candidate added');
+        this.parteiList[candidateData.parteiId].candidateList.push(candidateData.candidateName);
+        this.loggingService.logParteiDataChange("Added candidate: " + candidateData.candidateName);
+    }
+    updateCandidate(candidateData: { parteiId: number, candidateId:number, candidateName: string }){
+        this.parteiList[candidateData.parteiId].candidateList[candidateData.candidateId]=candidateData.candidateName;
     }
 }

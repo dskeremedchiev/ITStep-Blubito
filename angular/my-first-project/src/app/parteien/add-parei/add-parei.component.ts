@@ -23,7 +23,7 @@ export class AddPareiComponent implements OnInit {
   ngOnInit(): void { }
 
   onParteiAdd(newParteiNameInput: HTMLInputElement) {
-    this.loggingService.logParteiDataChange('new partai is created:' + newParteiNameInput.value);
+    //this.loggingService.logParteiDataChange('new partai is created:' + newParteiNameInput.value);
     this.parteiDataService.addPartai({
       parteiType: this.newParteiTypeInput.nativeElement.value,
       name: newParteiNameInput.value,
