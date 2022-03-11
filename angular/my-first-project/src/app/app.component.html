@@ -33,10 +33,18 @@ You entered: {{ name }} -->
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1 app-first-directive>Here will be our app</h1>
+      <div [ngSwitch]="testValue">
+        <div *ngSwitchDefault>Value is not from the list</div>
+
+        <div *ngSwitchCase="1">Value is 1</div>
+        <div *ngSwitchCase="5">Value is 5</div>
+        <div *ngSwitchCase="10">Value is 10</div>
+        <div *ngSwitchCase="20">Value is 20</div>
+      </div>
+      <!-- <h1 app-first-directive>Here will be our app</h1>
       <h1 appSecondDirective>Second directive demo</h1>
       <h1 [appSecondDir2]="myBgColor" defaultColor="#eee" >Second directive V2 demo</h1>
-      <hr>
+      <hr> -->
       <!-- <app-showhints></app-showhints>
       <hr>
 

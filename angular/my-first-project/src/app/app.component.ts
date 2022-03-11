@@ -10,4 +10,5 @@ export class AppComponent {
   loremipsum = 'Lorem ipsum dolor sit amet';
   name = "John Dow";
   myBgColor='pink';
+  testValue = 10;
 }

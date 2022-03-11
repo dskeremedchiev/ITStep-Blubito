@@ -37,5 +37,17 @@
     <button
     class="btn btn-primary" 
     (click)="onParteiAdd(newParteiNameInput)"
+    *ngIf="newParteiMembers"
+    >Add new</button>
+    <ng-template [ngIf]="newParteiMembers">
+        <button
+        class="btn btn-primary" 
+        (click)="onParteiAdd(newParteiNameInput)"
+        >Add new</button>       
+    </ng-template>
+    <button
+    class="btn btn-primary" 
+    (click)="onParteiAdd(newParteiNameInput)"
+    *appStructural="{countMembers:newParteiMembers, nameInput:newParteiNameInput.value, typeInput:newParteiTypeInput.value}"
     >Add new</button>
 </fieldset>

@@ -19,6 +19,7 @@ import { PartaiAccListComponent } from './parteien/partai-acc-list/partai-acc-li
 import { FirstDirective } from './first-directive/app-first-directive';
 import { SecondDirectiveDirective } from './second-directive/second-directive.directive';
 import { SecondDir2Directive } from './second-directive/second-dir2.directive';
+import { StructuralDirective } from './structural.directive';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { SecondDir2Directive } from './second-directive/second-dir2.directive';
     PartaiAccListComponent,
     FirstDirective,
     SecondDirectiveDirective,
-    SecondDir2Directive
+    SecondDir2Directive,
+    StructuralDirective
   ],
   imports: [
     BrowserModule,
