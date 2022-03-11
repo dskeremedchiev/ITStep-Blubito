@@ -17,6 +17,8 @@ import {
   OnDestroy,
   ContentChild
 } from "@angular/core";
+import { LoggingService } from "../services/logging.service";
+
 @Component({
   selector: 'app-partei',
   templateUrl: './partei.component.html',
@@ -45,16 +47,18 @@ export class ParteiComponent
   @ViewChild('myH4Element') myH4Element!:ElementRef;
   @ContentChild('contentButton') contentButton!:ElementRef;
   showList=false;
-  constructor(){
+  constructor(private loggingService: LoggingService){
     // console.log("Constructor called");
     // console.log("H4 element:");
     // console.log(this.myH4Element);
 
   } 
   canidateCreated(candidateData: {candidateName:string}){
-    console.log("New candidate", candidateData.candidateName, 
-    " ID:", this.parteiId);
+
+    // console.log("New candidate", candidateData.candidateName, 
+    // " ID:", this.parteiId);
     //emit to parent 
+    this.loggingService.logParteiDataChange('partei comp add candidate:' + candidateData.candidateName);
      this.onCanidateCreated.emit({
      parteiId: this.parteiId,
      candidateName:candidateData.candidateName,

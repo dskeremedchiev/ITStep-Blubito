@@ -20,6 +20,7 @@ import { FirstDirective } from './first-directive/app-first-directive';
 import { SecondDirectiveDirective } from './second-directive/second-directive.directive';
 import { SecondDir2Directive } from './second-directive/second-dir2.directive';
 import { StructuralDirective } from './structural.directive';
+import { LoggingService } from 'src/app/services/logging.service';
 
 
 @NgModule({
