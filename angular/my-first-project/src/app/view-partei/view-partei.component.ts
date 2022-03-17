@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ParteiDataService } from '../services/parteiData.service';
 
 @Component({
@@ -20,12 +20,19 @@ export class ViewParteiComponent implements OnInit {
     private route: ActivatedRoute,
     private parteiDataService: ParteiDataService,
 
-  ) { }
+  ) { console.log('constructor');}
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
+    this.id=+this.route.snapshot.params['id'];
     this.partei = this.parteiDataService.parteiList[this.id];
     this.parteiType = this.partei.parteiType;
+    this.route.params.subscribe(
+      (params:Params)=>{
+        this.id = +params['id'];
+        this.partei = this.parteiDataService.parteiList[this.id];
+        this.parteiType = this.partei.parteiType;
+      }
+    )
   }
 
 }
