@@ -25,18 +25,20 @@
             (click)="removePartei(i)"
         >X</button> -->
         <!-- <app-partei [partei]="partei" (parteiDeleted)="onRemovePartei($event)" [parteiId]="i" [testhtml]="testhtml"> -->
-        <app-partei 
-            [partei]="partei" 
-            [parteiId]="i" 
-            [parteiType]="partei.parteiType" 
-        >
-            <!-- <b>this is test html</b> -->
-            <button 
-                class="btn btn-danger" 
-                (click)="removePartei(i)"
-                #contentButton
-            >X</button>
-        </app-partei>
+        <a [routerLink]="['/viewpartei', i]">
+            <app-partei 
+                [partei]="partei" 
+                [parteiId]="i" 
+                [parteiType]="partei.parteiType" 
+            >
+                <!-- <b>this is test html</b> -->
+                <button 
+                    class="btn btn-danger" 
+                    (click)="removePartei(i)"
+                    #contentButton
+                >X</button>
+            </app-partei>
+        </a>
     </li>
 </ul>
 <!-- make delete partei button -->

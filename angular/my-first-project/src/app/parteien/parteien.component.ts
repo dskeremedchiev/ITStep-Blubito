@@ -11,7 +11,7 @@ import { ParteiDataService } from '../services/parteiData.service';
   templateUrl: './parteien.component.html',
   styleUrls: ['./parteien.component.css'],
   // styles: [`h4{display: inline;}`,]
-  providers: [LoggingService, ParteiDataService] 
+  providers: [] 
 
 })
 export class ParteienComponent implements OnInit {

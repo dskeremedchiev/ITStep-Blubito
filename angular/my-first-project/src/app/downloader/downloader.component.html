@@ -1,13 +1,19 @@
-<button 
-    class="btn btn-primary" 
-    [disabled]="waitSec"
-    (click)="startDownload()"
->
+<button class="btn btn-primary" [disabled]="waitSec" (click)="startDownload()">
     Download list
 </button>
 <p>Please wait {{waitSec}} seconds...</p>
 <p>Download status: <span>{{ !waitSec }} {{ isDownloading}}</span></p>
-
-
-
+<a routerLink="/download">
+    Reset download counter1
+</a>
+<br>
+<!-- not good solution to use pure javascript -->
+<!-- <button class="btn btn-primary" onclick="top.window.location='/';">Go to home</button> -->
+<button 
+    class="btn btn-primary" 
+    (click)="goToLinkButton()"
+>Go to home</button>
+<!-- <a routerLink="download">
+    Reset download counter2
+</a> -->
 <!-- <p>Download status: <span [innerText]="!waitSec"></span>!</p> -->

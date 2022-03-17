@@ -21,6 +21,10 @@ import { SecondDirectiveDirective } from './second-directive/second-directive.di
 import { SecondDir2Directive } from './second-directive/second-dir2.directive';
 import { StructuralDirective } from './structural.directive';
 import { LoggingService } from 'src/app/services/logging.service';
+import { RouterModule, Routes } from '@angular/router';
+import { ParteiDataService } from './services/parteiData.service';
+import { RouteTesterComponent } from './route-tester/route-tester.component';
+import { ViewParteiComponent } from './view-partei/view-partei.component';
 
 
 @NgModule({
@@ -38,7 +42,9 @@ import { LoggingService } from 'src/app/services/logging.service';
     FirstDirective,
     SecondDirectiveDirective,
     SecondDir2Directive,
-    StructuralDirective
+    StructuralDirective,
+    RouteTesterComponent,
+    ViewParteiComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,7 @@ import { LoggingService } from 'src/app/services/logging.service';
     FormsModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [LoggingService, ParteiDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
