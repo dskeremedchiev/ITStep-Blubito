@@ -20,7 +20,7 @@ export class ViewParteiComponent implements OnInit {
     private route: ActivatedRoute,
     private parteiDataService: ParteiDataService,
 
-  ) { console.log('constructor');}
+  ) { }
 
   ngOnInit(): void {
     this.id=+this.route.snapshot.params['id'];

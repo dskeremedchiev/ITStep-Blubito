@@ -17,6 +17,7 @@ import {
   OnDestroy,
   ContentChild
 } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 import { LoggingService } from "../services/logging.service";
 
 @Component({
@@ -47,7 +48,10 @@ export class ParteiComponent
   @ViewChild('myH4Element') myH4Element!:ElementRef;
   @ContentChild('contentButton') contentButton!:ElementRef;
   showList=false;
-  constructor(private loggingService: LoggingService){
+  constructor(
+    private loggingService: LoggingService,
+    private route: ActivatedRoute
+    ){
     // console.log("Constructor called");
     // console.log("H4 element:");
     // console.log(this.myH4Element);
@@ -79,6 +83,9 @@ export class ParteiComponent
   //   console.log(this.myH4Element);
   // }
   ngOnInit(): void {
+    if(this.route.snapshot.queryParams['showlist']){
+      this.showList=true;
+    }
     // console.log("ngOnInit called");
     // console.log("H4 element:");
     // console.log(this.myH4Element);
@@ -106,6 +113,8 @@ export class ParteiComponent
   //   console.log(this.myH4Element);
   // }
   // ngAfterViewInit(): void{
+    // this.showList=false;
+
   //   console.log("ngAfterViewInit called");
   //   // console.log("H4 element:");
   //   // console.log(this.myH4Element);    

@@ -25,7 +25,7 @@
             (click)="removePartei(i)"
         >X</button> -->
         <!-- <app-partei [partei]="partei" (parteiDeleted)="onRemovePartei($event)" [parteiId]="i" [testhtml]="testhtml"> -->
-        <a [routerLink]="['/viewpartei', i]">
+        
             <app-partei 
                 [partei]="partei" 
                 [parteiId]="i" 
@@ -38,7 +38,7 @@
                     #contentButton
                 >X</button>
             </app-partei>
-        </a>
+
     </li>
 </ul>
 <!-- make delete partei button -->
