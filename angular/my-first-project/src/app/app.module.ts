@@ -25,6 +25,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ParteiDataService } from './services/parteiData.service';
 import { RouteTesterComponent } from './route-tester/route-tester.component';
 import { ViewParteiComponent } from './view-partei/view-partei.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ViewParteiComponent } from './view-partei/view-partei.component';
     SecondDir2Directive,
     StructuralDirective,
     RouteTesterComponent,
-    ViewParteiComponent
+    ViewParteiComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ParteiDataService } from '../services/parteiData.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class ViewParteiComponent implements OnInit {
   };
   parteiType="";
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private parteiDataService: ParteiDataService,
 
@@ -25,14 +26,26 @@ export class ViewParteiComponent implements OnInit {
   ngOnInit(): void {
     this.id=+this.route.snapshot.params['id'];
     this.partei = this.parteiDataService.parteiList[this.id];
-    this.parteiType = this.partei.parteiType;
-    this.route.params.subscribe(
-      (params:Params)=>{
-        this.id = +params['id'];
-        this.partei = this.parteiDataService.parteiList[this.id];
-        this.parteiType = this.partei.parteiType;
-      }
-    )
+    if(this.partei === undefined){ //access not exsting partei
+      this.parteiType = "";
+      this.router.navigate(['/parteilist']);
+      return;
+    }else{
+      this.parteiType = this.partei.parteiType;
+      this.route.params.subscribe(
+        (params:Params)=>{
+          this.id = +params['id'];
+          this.partei = this.parteiDataService.parteiList[this.id];
+          if(this.partei === undefined){ //access not exsting partei
+            this.parteiType = "";
+            this.router.navigate(['/parteilist']);
+            return;
+          }else{
+            this.parteiType = this.partei.parteiType;
+          }
+        }
+      )
+    }
   }
 
 }

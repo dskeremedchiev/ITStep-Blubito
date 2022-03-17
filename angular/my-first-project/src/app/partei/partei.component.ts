@@ -17,7 +17,7 @@ import {
   OnDestroy,
   ContentChild
 } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Params } from "@angular/router";
 import { LoggingService } from "../services/logging.service";
 
 @Component({
@@ -86,6 +86,11 @@ export class ParteiComponent
     if(this.route.snapshot.queryParams['showlist']){
       this.showList=true;
     }
+    this.route.queryParams.subscribe(
+      (params:Params) =>{
+        this.showList= (params['showlist']) ? true:false;
+      }
+    );
     // console.log("ngOnInit called");
     // console.log("H4 element:");
     // console.log(this.myH4Element);

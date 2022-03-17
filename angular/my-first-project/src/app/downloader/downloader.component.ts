@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 
 @Component({
@@ -7,13 +7,13 @@ import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
   templateUrl: './downloader.component.html',
   styleUrls: ['./downloader.component.css']
 })
-export class DownloaderComponent {
+export class DownloaderComponent implements OnInit{
   waitSec = 3;
   // disabledButton = true;
   // myInterval:NodeJS.Timeout;
   myInterval: ReturnType<typeof setInterval>;
   isDownloading = "";
-
+  isTest = false;
 
   goToLinkButton() {
     // razni slojni obrabotki...
@@ -30,10 +30,23 @@ export class DownloaderComponent {
         // make button unabled
         // this.disabledButton = false;
         clearInterval(this.myInterval);
+        router.navigate([],{queryParams:{started:1}, relativeTo:route});
+        console.log(route);
       }
-    }, 1000)
+    }, 1000);
+
   }
   startDownload() {
     this.isDownloading = " / download started ...";
+  }
+  ngOnInit(): void {
+    console.log();
+    this.isTest = (this.route.snapshot.url[1]!=undefined && this.route.snapshot.url[1].path=='test');
+    this.route.params.subscribe(
+      (params: Params) =>{
+        console.log(params);
+        this.isDownloading= (params['started']) ? " / download started ..." : "";
+      }
+    );
   }
 }

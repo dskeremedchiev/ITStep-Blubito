@@ -12,8 +12,11 @@
 <button 
     class="btn btn-primary" 
     (click)="goToLinkButton()"
->Go to home</button>
+>Go to link</button>
 <!-- <a routerLink="download">
     Reset download counter2
 </a> -->
 <!-- <p>Download status: <span [innerText]="!waitSec"></span>!</p> -->
+<div *ngIf="isTest">
+    Running in test mode
+</div>
