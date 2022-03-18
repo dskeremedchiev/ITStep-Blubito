@@ -11,10 +11,10 @@ import { ViewParteiComponent } from './view-partei/view-partei.component';
 const routes: Routes = [
   {path:'', component: ParteienComponent},
   {path:'download', component: DownloaderComponent, children:[
-    {path:'test', component: DownloaderComponent},
+    //{path:'test', component: DownloaderComponent},
   ]
   },
-  // {path:'download/test', component: DownloaderComponent},
+   {path:'download/test', component: DownloaderComponent},
   {path:'parteilist', component: ParteienComponent},
   {path:'addpartai', component: AddPareiComponent},
   {path:'viewpartei/:id', component: ViewParteiComponent},

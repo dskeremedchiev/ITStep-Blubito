@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 
@@ -7,13 +7,16 @@ import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
   templateUrl: './downloader.component.html',
   styleUrls: ['./downloader.component.css']
 })
-export class DownloaderComponent implements OnInit{
+export class DownloaderComponent implements OnInit, OnDestroy{
   waitSec = 3;
   // disabledButton = true;
   // myInterval:NodeJS.Timeout;
-  myInterval: ReturnType<typeof setInterval>;
+  // disabledButton = true;
+  // myInterval:NodeJS.Timeout;
+  myInterval: ReturnType<typeof setInterval> | undefined;
   isDownloading = "";
   isTest = false;
+
 
   goToLinkButton() {
     // razni slojni obrabotki...
@@ -24,29 +27,36 @@ export class DownloaderComponent implements OnInit{
     private router: Router,
     private route: ActivatedRoute,
   ) {
-    this.myInterval = setInterval(() => {
-      this.waitSec -= 1;
-      if (this.waitSec == 0) {
-        // make button unabled
-        // this.disabledButton = false;
-        clearInterval(this.myInterval);
-        router.navigate([],{queryParams:{started:1}, relativeTo:route});
-        console.log(route);
-      }
-    }, 1000);
+
 
   }
   startDownload() {
     this.isDownloading = " / download started ...";
   }
   ngOnInit(): void {
-    console.log();
+
     this.isTest = (this.route.snapshot.url[1]!=undefined && this.route.snapshot.url[1].path=='test');
+    console.log(this.route.snapshot);
+  
     this.route.params.subscribe(
       (params: Params) =>{
-        console.log(params);
+       console.log(this.route.snapshot.params);
         this.isDownloading= (params['started']) ? " / download started ..." : "";
       }
     );
+
+    this.myInterval = setInterval(() => {
+      this.waitSec -= 1;
+      if (this.waitSec == 0) {
+        // make button unabled
+        // this.disabledButton = false;
+        if(this.myInterval) clearInterval(this.myInterval);
+        this.router.navigate([],{queryParams:{started:1}, relativeTo:this.route});
+        //console.log(this.route);
+      }
+    }, 1000);
+  }
+  ngOnDestroy(): void {
+    if(this.myInterval) clearInterval(this.myInterval);
   }
 }
