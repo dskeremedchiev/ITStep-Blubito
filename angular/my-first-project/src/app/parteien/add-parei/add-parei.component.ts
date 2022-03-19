@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { CanDeactivate, Router, UrlTree } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { LoggingService } from 'src/app/services/logging.service';
 import { ParteiDataService } from '../../services/parteiData.service';
+import { CanComponentDeactivate } from './can-deactivate-guard.service';
 
 
 @Component({
@@ -8,16 +11,19 @@ import { ParteiDataService } from '../../services/parteiData.service';
   templateUrl: './add-parei.component.html',
   styleUrls: ['./add-parei.component.css'],
 })
-export class AddPareiComponent implements OnInit {
+export class AddPareiComponent implements OnInit, CanComponentDeactivate {
   // newParteiType="";
   // newParteiName="";
   newParteiMembers = 0; // Re-work newParteiMembers using Local Ref or ViewChild methods
   //@Output() parteiCreated = new EventEmitter<{parteiType:string, name:string, members:number, candidateList:string[]}>();
   @ViewChild('newParteiTypeInput') newParteiTypeInput!: ElementRef;
 
+  // adding unload route guard 
+  changesSaved: boolean = false;
   constructor(
     private loggingService: LoggingService,
     private parteiDataService: ParteiDataService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void { }
@@ -36,10 +42,21 @@ export class AddPareiComponent implements OnInit {
     //   members: this.newParteiMembers,
     //   candidateList: []
     // });
-    newParteiNameInput.value = "";
+    this.changesSaved = true;
+    this.router.navigate(['/parteilist']);
+    // newParteiNameInput.value = "";
     // this.newParteiType="";
     // this.newParteiName="";
-    this.newParteiMembers = 0;
+    // this.newParteiMembers = 0;
+  }
+  canDeactivate(): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree{
+    // console.log('deactivate');
+    if(!this.changesSaved ){
+      return confirm('Do you want to discard changes');
+    }
+    else{
+      return true;
+    }
   }
 
 

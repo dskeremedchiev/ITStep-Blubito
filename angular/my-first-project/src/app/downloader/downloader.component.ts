@@ -10,9 +10,7 @@ import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 export class DownloaderComponent implements OnInit, OnDestroy{
   waitSec = 3;
   // disabledButton = true;
-  // myInterval:NodeJS.Timeout;
   // disabledButton = true;
-  // myInterval:NodeJS.Timeout;
   myInterval: ReturnType<typeof setInterval> | undefined;
   isDownloading = "";
   isTest = false;
@@ -27,8 +25,6 @@ export class DownloaderComponent implements OnInit, OnDestroy{
     private router: Router,
     private route: ActivatedRoute,
   ) {
-
-
   }
   startDownload() {
     this.isDownloading = " / download started ...";
@@ -36,11 +32,10 @@ export class DownloaderComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
 
     this.isTest = (this.route.snapshot.url[1]!=undefined && this.route.snapshot.url[1].path=='test');
-    console.log(this.route.snapshot);
   
-    this.route.params.subscribe(
+    this.route.queryParams.subscribe(
       (params: Params) =>{
-       console.log(this.route.snapshot.params);
+        console.log('subscription started', this.route.url);
         this.isDownloading= (params['started']) ? " / download started ..." : "";
       }
     );
@@ -50,9 +45,11 @@ export class DownloaderComponent implements OnInit, OnDestroy{
       if (this.waitSec == 0) {
         // make button unabled
         // this.disabledButton = false;
-        if(this.myInterval) clearInterval(this.myInterval);
+        if(this.myInterval) {
+          console.log('clearing interval');
+          clearInterval(this.myInterval);
+        }
         this.router.navigate([],{queryParams:{started:1}, relativeTo:this.route});
-        //console.log(this.route);
       }
     }, 1000);
   }

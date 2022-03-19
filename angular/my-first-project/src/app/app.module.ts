@@ -26,6 +26,13 @@ import { ParteiDataService } from './services/parteiData.service';
 import { RouteTesterComponent } from './route-tester/route-tester.component';
 import { ViewParteiComponent } from './view-partei/view-partei.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PoliticsComponent } from './politics/politics.component';
+import { PoliticComponent } from './politics/politic/politic.component';
+import { PeopleComponent } from './politics/politic/people/people.component';
+import { LoginService } from './services/login.service';
+import { AdminGuardService } from './politics/admin-guard.service';
+import { NotAuthComponent } from './not-found/not-auth/not-auth.component';
+import { CanDeactivateGuardService } from './parteien/add-parei/can-deactivate-guard.service';
 
 
 @NgModule({
@@ -46,7 +53,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
     StructuralDirective,
     RouteTesterComponent,
     ViewParteiComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PoliticsComponent,
+    PoliticComponent,
+    PeopleComponent,
+    NotAuthComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FormsModule,
     NgbModule,
   ],
-  providers: [LoggingService, ParteiDataService],
+  providers: [LoggingService, ParteiDataService, LoginService, AdminGuardService, CanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
