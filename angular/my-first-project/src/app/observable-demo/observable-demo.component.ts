@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { interval,  Observable, Subscription } from 'rxjs';
+import { map, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-observable-demo',
@@ -8,23 +9,24 @@ import { interval, Observable, Subscription } from 'rxjs';
 })
 export class ObservableDemoComponent implements OnInit, OnDestroy {
   private myTestSubscription: Subscription | undefined;
+  waitSec = 5;
+  msg = "";
   constructor() { }
 
   ngOnInit(): void {
     console.log('observables start');
-    // this.myTestSubscription = interval(1000).subscribe( count=>{
-    //   console.log(count);
+    // this.myTestSubscription = interval(1000).subscribe( this.waitSec=>{
+    //   console.log(this.waitSec);
     // })
     //const customIntervalObservable = Observable.create(()=>);
     const customIntervalObservable = new Observable( observer=>{
-      let count = 5;
       setInterval(()=>{
-        observer.next(count);
-        count--;
-        if(count<0){
+        observer.next(this.waitSec);
+        this.waitSec--;
+        if(this.waitSec<0){
           observer.error(new Error('Counter is negative'));
         }
-        if(count===0){
+        if(this.waitSec===0){
           observer.complete();
         }
       },1000);
@@ -39,19 +41,32 @@ export class ObservableDemoComponent implements OnInit, OnDestroy {
     //   alert(error);
     // },
     // ()=>{
-    //   console.log('Counter completed');
+    //   console.log('this.waitSecer completed');
     // }
     // );
-    this.myTestSubscription = customIntervalObservable.subscribe(
+
+    this.myTestSubscription = customIntervalObservable.
+    pipe(
+      filter(num => Number(num) % 2 === 0),
+      map( (data, number) => {
+        return `Wait ${data} to download`;
+      })
+    ).
+    subscribe(
     {
-      next: data=>{
+      next: (data)=>{
+          //this.msg = `Wait ${data} to download`;
+          //this.msg = `Old : Wait ${data} to download`;
+          this.msg = data;
           console.log(data);
       },
       error: error=>{
+        this.msg ="An error occured";
         console.log(error);
         alert(error);      
       },
       complete: ()=>{
+        this.msg ="You can download now";
         console.log('Counter completed');
       }
     });
