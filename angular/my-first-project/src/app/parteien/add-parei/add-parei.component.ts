@@ -51,6 +51,8 @@ export class AddPareiComponent implements OnInit, CanComponentDeactivate {
   }
   canDeactivate(): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree{
     // console.log('deactivate');
+    // homework -> check form fields 
+    // if not changed -> return true;
     if(!this.changesSaved ){
       return confirm('Do you want to discard changes');
     }
