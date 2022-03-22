@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DownloaderComponent } from './downloader/downloader.component';
 import { NotAuthComponent } from './not-found/not-auth/not-auth.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 import { ParteiComponent } from './partei/partei.component';
 import { AddPareiComponent } from './parteien/add-parei/add-parei.component';
 import { CanDeactivateGuardService } from './parteien/add-parei/can-deactivate-guard.service';
@@ -15,6 +16,8 @@ import { RouteTesterComponent } from './route-tester/route-tester.component';
 import { ViewParteiComponent } from './view-partei/view-partei.component';
 
 const routes: Routes = [
+  {path:'observers', component: ObservableDemoComponent},
+
   {path: 'politics', 
     //canActivate:[AdminGuardService], 
     canActivateChild:[AdminGuardService],

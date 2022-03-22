@@ -33,6 +33,7 @@ import { LoginService } from './services/login.service';
 import { AdminGuardService } from './politics/admin-guard.service';
 import { NotAuthComponent } from './not-found/not-auth/not-auth.component';
 import { CanDeactivateGuardService } from './parteien/add-parei/can-deactivate-guard.service';
+import { ObservableDemoComponent } from './observable-demo/observable-demo.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { CanDeactivateGuardService } from './parteien/add-parei/can-deactivate-g
     PoliticsComponent,
     PoliticComponent,
     PeopleComponent,
-    NotAuthComponent
+    NotAuthComponent,
+    ObservableDemoComponent
   ],
   imports: [
     BrowserModule,
