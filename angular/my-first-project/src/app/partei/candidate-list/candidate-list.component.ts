@@ -6,6 +6,9 @@ import { ParteiDataService } from 'src/app/services/parteiData.service';
   selector: 'app-candidate-list',
   templateUrl: './candidate-list.component.html',
   styleUrls: ['./candidate-list.component.css'],
+  animations:[
+
+  ]
 })
 export class CandidateListComponent implements OnInit {
   candidates: string[] = [];
@@ -43,7 +46,6 @@ export class CandidateListComponent implements OnInit {
   ngOnInit(): void {
     this.candidates = this.parteiDataService.parteiList[this.parteiId].candidateList;
   }
-
 }
 
 

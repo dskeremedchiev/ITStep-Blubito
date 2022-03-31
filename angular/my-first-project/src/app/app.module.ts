@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +41,9 @@ import { PeopleFilterPipe } from './politics/politic/people/people-filter.pipe';
 import { ParteienFilterPipe } from './parteien/parteien-filter.pipe';
 import { CnjokesComponent } from './cnjokes/cnjokes.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatappComponent } from './chatapp/chatapp.component';
+import { ChatmsgsComponent } from './chatapp/chatmsgs/chatmsgs.component';
+import { SendmsgsComponent } from './chatapp/sendmsgs/sendmsgs.component';
 
 
 @NgModule({
@@ -72,15 +75,20 @@ import { HttpClientModule } from '@angular/common/http';
     politicsShortenPipe,
     PeopleFilterPipe,
     ParteienFilterPipe,
-    CnjokesComponent
+    CnjokesComponent,
+    ChatappComponent,
+    ChatmsgsComponent,
+    SendmsgsComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
   ],
   providers: [LoggingService, ParteiDataService, LoginService, AdminGuardService, CanDeactivateGuardService],
   bootstrap: [AppComponent]
