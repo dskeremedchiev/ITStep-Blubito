@@ -25,6 +25,9 @@ class="btn btn-danger"
             [ngClass]="{'btn-primary':showList, 'btn-success':!showList}" 
             (click)="showList=!showList"
         >{{ (showList)? "Hide": "Show"}}</button>
+        <div id="switcher" (click)="updateSwitch(); showList=!showList;">
+            <div id="mydot" [@elementState]="switchState"></div>
+        </div>
     </div>        
     <div class="col-xs-12 col-md-4" *ngIf="showList">
         <app-candidate-list [parteiId]="parteiId"></app-candidate-list>

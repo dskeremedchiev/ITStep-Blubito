@@ -62,8 +62,16 @@
           </a>
         </li>        
       </ul>
-      <button class="btn btn-success" (click)="loginAdmin()">Login</button>
-      <button class="btn btn-danger" (click)="logoutAdmin()">Logout</button>
+      <button 
+        class="btn btn-success" 
+        (click)="loginAdmin()" 
+        *ngIf="!this.isAdmin"
+      >Login</button>
+      <button 
+        class="btn btn-danger" 
+        (click)="logoutAdmin()"
+        *ngIf="this.isAdmin"
+      >Logout</button>
     </div>
   </div>
 </nav>
@@ -73,6 +81,7 @@
 
 Enter your name:<input type="text" [(ngModel)]="name" /><br />
 You entered: {{ name }} -->
+<div class="content"><span>my-first-project app is running!</span></div>
 
 <div class="container">
   <div class="row">

@@ -1,6 +1,6 @@
 <ol>
-    <li *ngFor="let candidate of candidates; let i=index;" [ngStyle]="{fontStyle:(i%2)?'italic':''}">
-        <div *ngIf="editCandidateId!==i">
+    <li *ngFor="let candidate of candidates; let i=index;" [ngStyle]="{fontStyle:(i%2)?'italic':''}" [@list]>
+        <div *ngIf="editCandidateId!==i" >
             <button class="btn btn-success btn-sm" (click)="editCandidateId=i">Edit</button>
             {{ candidate }}            
         </div>

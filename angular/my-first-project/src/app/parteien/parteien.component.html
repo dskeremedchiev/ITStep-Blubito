@@ -20,7 +20,7 @@
 
 
 <ul [style]="{'list-style-type':'none', padding:0}">
-    <li *ngFor="let partei of parteiList; let i = index" [ngStyle]="{backgroundColor:(i%2) ? '#eee': 'white'}">
+    <li *ngFor="let partei of parteiList; let i = index" [ngStyle]="{backgroundColor:(i%2) ? '#eee': 'white'}" [@plist]>
         <!-- <button 
             class="btn btn-danger"
             (click)="removePartei(i)"

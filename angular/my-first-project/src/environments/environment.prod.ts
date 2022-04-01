@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  chatURLPREFIX: 'https://shkolo22.000webhostapp.com/'
 };

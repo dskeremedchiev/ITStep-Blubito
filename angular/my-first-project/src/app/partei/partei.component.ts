@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
 import { 
   Component, 
   EventEmitter, 
@@ -25,6 +26,21 @@ import { LoggingService } from "../services/logging.service";
   templateUrl: './partei.component.html',
   styleUrls: ['./partei.component.css'],
   encapsulation: ViewEncapsulation.Emulated,
+  animations:[
+    trigger('elementState', [
+      state('off',style({
+        'background-color':"red",
+        transform: 'translateX(0)'
+      })),
+      state('on',style({
+        'background-color':"green",
+        transform: 'translateX(70px)'
+      })),
+      // transition("off => on", animate(500)),
+      // transition("on => off", animate(300)),
+      transition("on <=> off", animate(300)),
+    ]),
+  ]
 })
 
 export class ParteiComponent  
@@ -49,6 +65,14 @@ export class ParteiComponent
   @ContentChild('contentButton') contentButton!:ElementRef;
   showList=false;
   Mitgliedsbeitrag = 5.6;
+
+  switchState='off';
+  updateSwitch(){
+    this.switchState = (this.switchState==='off') ? "on" : "off";
+  }
+
+
+
   constructor(
     private loggingService: LoggingService,
     private route: ActivatedRoute

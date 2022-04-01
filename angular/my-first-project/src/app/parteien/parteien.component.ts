@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { LoggingService } from '../services/logging.service';
 import { ParteiDataService } from '../services/parteiData.service';
@@ -11,7 +12,22 @@ import { ParteiDataService } from '../services/parteiData.service';
   templateUrl: './parteien.component.html',
   styleUrls: ['./parteien.component.css'],
   // styles: [`h4{display: inline;}`,]
-  providers: [] 
+  providers: [],
+  animations:[
+    trigger('plist',[
+      state('out',style({
+        opacity: 1,
+      })),
+      transition('*=>void',[
+        animate(1000,
+          style({
+            // transform:'translateX(100px)',
+            opacity: 0,
+          })
+        )
+      ])
+    ])
+  ]
 
 })
 export class ParteienComponent implements OnInit {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Msgs } from './msgs.model';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-chatmsgs',
   templateUrl: './chatmsgs.component.html',
@@ -18,7 +18,7 @@ export class ChatmsgsComponent implements OnInit {
     this.getChatMsgs();
   }
   getChatMsgs(){
-    const url = 'http://kabinata.com/wp/2016js/chatmsgs.php';
+    const url = environment.chatURLPREFIX + 'chatmsgs.php';
     // const url = 'https://shkolo22.000webhostapp.com/chatmsgs.php';
     this.http
     .get<{chatmsgs: Msgs[]}>(url)

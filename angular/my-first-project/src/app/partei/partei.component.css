@@ -3,3 +3,14 @@ h4{
     display: inline;
     /* text-transform: uppercase; */
 }
+#switcher{
+    border:1px solid gray;
+    width:100px;
+    height: 32px;
+    border-radius: 15px;
+}
+#mydot{
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+}

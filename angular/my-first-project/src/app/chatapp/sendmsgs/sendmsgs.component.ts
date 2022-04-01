@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class SendmsgsComponent implements OnInit {
     formData.append('chatmsg', this.msgForm.value.chatmsg);
     // http://kabinata.com/wp/2016js/chat.php
     this.http
-    .post('http://kabinata.com/wp/2016js/chat.php', formData)
+    .post(environment.chatURLPREFIX + 'chat.php', formData)
     // .post('https://shkolo22.000webhostapp.com/chat.php',formData)
     .subscribe( {
       next: postData =>{

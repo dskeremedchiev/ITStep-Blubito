@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoggingService } from 'src/app/services/logging.service';
 import { ParteiDataService } from 'src/app/services/parteiData.service';
@@ -7,6 +8,19 @@ import { ParteiDataService } from 'src/app/services/parteiData.service';
   templateUrl: './candidate-list.component.html',
   styleUrls: ['./candidate-list.component.css'],
   animations:[
+    trigger('list',[
+      state('in',style({
+        opacity:1,
+        transform: 'translateX(0)'
+      })),
+      transition('void =>*',[
+        style({
+          opacity:0,
+          transform: 'translateX(-100px)'        
+        }),
+        animate(300)
+      ])
+    ]),
 
   ]
 })
